@@ -10,7 +10,7 @@ DEFAULT_SETTINGS = {
     "colors": {"snake": (0, 255, 0), "food": (255, 255, 255), "bg": (0, 0, 0)}
 }
 
-def parse_color(value):
+def _parse_color(value):
     if value is None:
         return (0, 0, 0)
     if isinstance(value, (list, tuple)) and len(value) == 3:
@@ -65,6 +65,6 @@ def load_settings(path="settings.yaml"):
     if isinstance(colors, dict):
         for k in ("snake", "food", "bg"):
             if k in colors:
-                settings["colors"][k] = parse_color(colors[k])
+                settings["colors"][k] = _parse_color(colors[k])
 
     return settings
